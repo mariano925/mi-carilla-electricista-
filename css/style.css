@@ -1,0 +1,169 @@
+/* 1. VARIABLES: Paleta técnica extraída de los cables */
+:root {
+    --cable-amarillo: #f2d027;
+    --cable-azul: #1d5fa6;
+    --cable-rojo: #d93d32;
+    --whatsapp: #25d366;
+    --fondo-oscuro: #121212; /* Fondo industrial */
+    --texto-claro: #f5f5f5;
+    --borde: rgba(255, 255, 255, 0.1);
+}
+
+/* 2. RESET Y ESTRUCTURA BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.grid-layout {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--fondo-oscuro);
+    color: var(--texto-claro);
+    line-height: 1.6;
+    
+    /* CSS GRID: Para organizar las secciones sin que se pisen */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto; 
+    gap: 40px;
+    padding: 60px 20px;
+}
+
+/* 3. ENCABEZADO */
+.header-area {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: var(--cable-amarillo);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* 4. SECCIONES: Contenedores con transparencia e interactividad */
+section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03); /* Fondo casi invisible */
+    border: 1px solid var(--borde);
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+section:hover {
+    border-color: var(--cable-azul);
+    background: rgba(29, 95, 166, 0.05);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* 5. FLEXBOX PARA SERVICIOS (Display Block/Inline) */
+.contenedor-flex {
+    display: flex;
+    flex-direction: row; /* Flujo horizontal */
+    flex-wrap: wrap; /* Responsivo */
+    align-items: center;
+    gap: 40px;
+}
+
+ul {
+    flex: 1;
+    min-width: 280px;
+    list-style: none;
+    display: block; /* Regla de bloque */
+}
+
+li {
+    padding: 15px;
+    margin-bottom: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 5px solid var(--cable-rojo);
+    transition: 0.3s;
+}
+
+li:hover {
+    transform: translateX(15px); /* Interactividad */
+    border-left-color: var(--cable-amarillo);
+    background: rgba(242, 208, 39, 0.1);
+}
+
+.img-interactiva {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+.img-interactiva:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+/* 6. BOTÓN WHATSAPP (Positioned & Table) */
+.contenedor-boton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.boton-whatsapp {
+    display: table; /* Propiedad solicitada */
+    background-color: var(--whatsapp);
+    color: white;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: relative; /* Positioned solicitado */
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Animación de brillo interno */
+.boton-whatsapp::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(30deg);
+    transition: 0.5s;
+}
+
+.boton-whatsapp:hover::after {
+    left: 120%;
+}
+
+.boton-whatsapp:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px var(--whatsapp);
+}
+
+/* 7. SEO LOCAL Y REGLAS CONDICIONALES */
+.section-title {
+    color: var(--cable-amarillo);
+    margin-bottom: 25px;
+    display: inline-block;
+    border-bottom: 2px solid var(--cable-azul);
+}
+
+@media (max-width: 768px) {
+    .contenedor-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    li { text-align: left; }
+    
+    h1 { font-size: 1.8rem; }
+}
